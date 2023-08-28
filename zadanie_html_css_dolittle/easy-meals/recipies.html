@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+  <script src="https://kit.fontawesome.com/a94b9a153b.js" crossorigin="anonymous"></script>
+  <title>Recipies</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Open Sans", sans-serif;
+      color: #343a40;
+      line-height: 1;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-inline: 2.75rem;
+      font-size: large;
+      background-color: #FBAA7E;
+      height: 7rem;
+    }
+
+    .logo img {
+      width: 8.5rem;
+      height: 8.5rem;
+    }
+
+    .nav-tabs ul {
+      display: flex;
+      list-style-type: none;
+      color: white;
+      gap: 4rem;
+    }
+
+    .search-component {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      gap: 20%;
+      margin: 4rem 0;
+    }
+
+    .search-component .left h2 {
+      width: 32rem;
+      font-size: 2.75rem;
+      margin-block: 1rem;
+    }
+
+    .search-component .left p {
+      font-size: 1.25rem;
+    }
+
+    .input-component {
+      margin-block: 2rem;
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .input-component input {
+      height: 3.25rem;
+      padding-left: 1rem;
+      font-size: 1.25rem;
+      border-radius: 0.75rem;
+      border: solid 1px lightgray;
+      box-shadow: grey -1px 2px 4px;
+    }
+
+    .input-component .btn {
+      height: 3.25rem;
+      padding-inline: 0.75rem;
+      font-size: 1.25rem;
+      border-radius: 0.75rem;
+      border: 0;
+      box-shadow: grey -1px 2px 4px;
+      color: white;
+      background-color: #FBAA7E;
+      cursor: pointer;
+      transition-duration: 200ms;
+    }
+
+    .btn:hover {
+      background-color: #ffc6a7;
+    }
+
+    .search-component .right img {
+      width: 25rem;
+      height: 25rem;
+    }
+
+
+    .category-banner {
+      width: 100%;
+      height: 36rem;
+      background-image: url("../img/photo/breakfast.jpg");
+      background-position: top;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 4rem;
+      font-weight: bold;
+      background-color: lightgray;
+      background-blend-mode: multiply;
+    }
+
+    .recipe-component {
+      display: flex;
+      flex: 1 1;
+      gap: 5rem;
+      margin: 6rem 5rem 4rem 5rem;
+    }
+
+    .recipes-list {
+      border: #343a40 solid 1px;
+      border-radius: 10px;
+      width: 100%;
+      height: fit-content;
+    }
+
+    .recipes-list li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 4rem;
+      border-bottom: #343a40 solid 1px;
+      border-radius: 10px 10px 0 0;
+      font-weight: bold;
+    }
+
+    .recipes-list li:last-child {
+      border-bottom: none;
+    }
+
+    .recipes-list li.selected {
+      background-color: #fbd5c0;
+      
+    }
+
+    .selected-recipe {
+      width: 100%;
+    }
+
+    .selected-recipe .recipe-title {
+      text-align: center;
+      margin: 2rem;
+      color: #FBAA7E;
+      font-weight: 800;
+    }
+
+    .recipe-detail {
+      margin: 0 1rem;
+    }
+
+    .recipe-detail .info {
+      display: flex;
+      font-size: 1.7rem;
+      margin-top: 1.5rem;
+    }
+
+    .recipe-detail .info span {
+      display: flex;
+      width: 50%;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .recipe-detail .info i {
+      color: #FBAA7E;
+      font-size: 2.3rem;
+    }
+
+    .recipe-picture {
+      width: 100%;
+      height: 20rem;
+    }
+
+    .recipe-picture img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 70%;
+      border-radius: 10px;
+    }
+
+    .recipe-detail h3 {
+      margin-block: 1.5rem;
+    }
+
+    .recipe-detail ul, ol {
+      margin-left: 2rem;
+    }
+
+    .recipe-detail li {
+      line-height: 1.2rem;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1.5rem 8rem;
+    }
+
+    .copyright {
+      font-size: 1.5rem;
+      font-weight: 100;
+    }
+
+    footer .media {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 4rem;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <div class="part-one">
+      <div class="top">
+        <div class="logo">
+          <img src="../img/svg/logo.svg" alt="logo">
+        </div>
+        <div class="nav-tabs">
+          <ul>
+            <li>Home</li>
+            <li><u>Recipies</u></li>
+            <li>About</li>
+            <li>Contact</li>
+          </ul>
+        </div>
+      </div>
+      <div class="search-component">
+        <div class="left">
+          <h2>Recipies</h2>
+          <p>With shopping list!</p>
+          <div class="input-component">
+            <input type="email" placeholder="Enter your email"/>
+            <button class="btn">Search</button>
+          </div>
+        </div>
+        <div class="right">
+          <img src="../img/svg/eating_together.svg" alt="eating together">
+        </div>
+      </div>
+    </div>
+    <div class="category-banner">
+        Breakfast
+    </div>
+
+    <div class="recipe-component">
+      <div class="recipes-list">
+        <ul>
+          <li class="selected">Orange Pancakes</li>
+          <li>Orange with pecans</li>
+          <li>Freanch Toast</li>
+          <li>Brecfast Burrito</li>
+          <li>Banana Bread</li>
+          <li>Omlet with greens</li>
+          <li>Omlet du fromage</li>
+          <li>Jammy egg</li>
+          <li>Tropical Smoothie Bowl</li>
+        </ul>
+      </div>
+
+      <div class="selected-recipe">
+        <h1 class="recipe-title">Orange Pancakes</h1>
+        <div class="recipe-picture">
+          <img src="../img/photo/pancakes.jpg" alt="Pancakes">
+        </div>
+        <div class="recipe-detail">
+          <div class="info">
+            <span><i class="fa-regular fa-clock"></i> 25 min</span>
+            <span><i class="fa-solid fa-user"></i> 2 servings</span>
+          </div>
+          <h3>Ingredients:</h3>
+          <ul>
+            <li>&frac12; cup orange juice</li>
+            <li>1 tablespoon orange zest, finely granted</li>
+            <li>1 &frac12; cups all-purpose flour</li> 
+            <li>&frac12; teaspoon baking soda </li>
+            <li>1 &frac12; teaspoon baking powder </li>
+            <li>&frac12; teaspoon salt</li> 
+            <li>&frac14; cup granulated sugar </li>
+            <li>&frac12; cup milk</li> 
+            <li>2 eggs</li>
+            <li>4 tablespoon butter, melted</li>
+            <li>1 tablespoon vegetable oil, to grease the pan</li>
+          </ul>
+
+          <h3>Instruction:</h3>
+          <ol>
+            <li>Whisk milk, eggs, orange juice and orange zest in a large bowl until smooth.</li>
+            <li>Whisk in flour, sugar, salt, baking powder and baking soda. Whisk in melted butter and stir until smooth.</li>
+            <li>Heat large pan over medium heat. Grease the pan with oil. Now, pour about 1/4 cup of the batter into the pan for each pancake.</li>
+            <li>When bubbles begin to appear on top, flip the pancakes and cook for 1-2 minutes or until the other side is lightly brown.</li>
+            <li>Place the pancakes into a serving plate. Serve with whipped cream and a drizzle of maple syrup on top.</li>
+          </ol>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    
+  </section>
+  <footer>
+    <div class="copyright">
+      &copy; EasyMeals. All rights reserved.
+    </div>
+    <div class="media">
+      <i class="fa-brands fa-instagram"></i>
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-pinterest"></i>
+    </div>
+  </footer>
+
+</body>
+
+</html>
