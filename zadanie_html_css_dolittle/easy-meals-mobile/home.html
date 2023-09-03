@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+  <script src="https://kit.fontawesome.com/a94b9a153b.js" crossorigin="anonymous"></script>
+  <title>Home</title>
+  <style>
+    * {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100%;
+      font-family: "Open Sans", sans-serif;
+      color: #343a40;
+      line-height: 1;
+    }
+
+    .part-one {
+      display: block;
+      width: 100%;
+      position: relative;
+    }
+
+    .gradient {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      background-image: linear-gradient(#FBAA7E, white);
+      z-index: -1;
+    }
+
+    .top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-inline: 4%;
+      font-size: large;
+      position: relative;
+      gap: 8%;
+    }
+
+    .logo {
+      flex: 1;
+    }
+
+    .logo img {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    .nav-tabs ul {
+      display: flex;
+      list-style-type: none;
+      color: white;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      flex: 6;
+      justify-content: flex-end;
+    }
+
+    .nav-tabs ul li {
+      width: 6rem;
+      text-align: right;
+    }
+
+    .subscribe-component {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 4rem 4%;
+    }
+
+    .left {
+      flex: 1;
+      min-width: 20rem;
+    }
+
+    .subscribe-component .left h2 {
+      width: 100%;
+    }
+
+    .input-component {
+      padding-block: 2rem;
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .input-component input {
+      height: 2rem;
+      padding-left: 0.5rem;
+      border-radius: 8px;
+      border: solid 1px lightgray;
+      box-shadow: grey -1px 2px 4px;
+    }
+
+    .input-component .btn {
+      height: 2rem;
+      padding-inline: 0.75rem;
+      border-radius: 8px;
+      border: 0;
+      box-shadow: grey -1px 2px 4px;
+      color: white;
+      background-color: #FBAA7E;
+      cursor: pointer;
+      transition-duration: 200ms;
+    }
+
+    .btn:hover {
+      background-color: #ffc6a7;
+    }
+
+    .right {
+      flex: 1;
+    }
+
+    .subscribe-component .right {
+      text-align: center;
+    }
+
+    .subscribe-component .right img {
+      width: 12rem;
+      height: 12rem;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+      row-gap: 1rem;
+      column-gap: 2rem;
+      padding: 1% 5% 5% 5%;
+    }
+
+    .categories .panel {
+      width: 100%;
+      height: 16vh;
+      display: grid;
+      grid-template-rows: 8vh auto;
+      align-items: center;
+      justify-items: center;
+
+      gap: 1rem;
+      border: 1px solid lightgray;
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: lightgrey 0 4px 5px;
+    }
+
+    .categories .panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .categories .panel span {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .trending-recipies {
+      background-color: #FBAA7E;
+      padding: 3rem 5%;
+    }
+
+    .trending-recipies-title {
+      font-size: 1.2rem;
+      color: white;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .trending-recipies-title i {
+      width: 1rem;
+    }
+
+    .trending-recipies .cards {
+      display: flex;
+      justify-content: space-between;
+      gap: 3%;
+    }
+
+    .trending-recipies .cards .card {
+      height: 22vh;
+      box-shadow: gray 0 4px 5px;
+      border-radius: 1.25rem;
+      position: relative;
+    }
+
+    .trending-recipies .cards .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1.25rem;
+    }
+
+    .card .more-info {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      background-color: rgba(5, 1, 1, 0.225);
+      height: 100%;
+      width: 100%;
+      border-radius: 1.25rem;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      transition-duration: 200ms;
+      cursor: pointer;
+    }
+
+    .card .more-info .name {
+      font-size: 1.25rem;
+      text-align: center;
+    }
+
+    .card .more-info .time {
+      display: flex;
+      gap: 0.5rem;
+      padding-inline: 4%;
+    }
+
+    .card .more-info .time i {
+      width: 1rem;
+    }
+
+    #pumpkin-pie:hover .more-info {
+      opacity: 1;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+    }
+
+    .copyright {
+      /* font-size: 1.5rem; */
+      font-weight: 100;
+      flex: 2;
+    }
+
+    footer .media {
+      display: flex;
+      gap: 0.5rem;
+      flex: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <div class="part-one">
+      <div class="gradient"></div>
+      <div class="top">
+        <div class="logo">
+          <img src="../img/svg/logo.svg" alt="logo">
+        </div>
+        <div class="nav-tabs">
+          <ul>
+            <li><u>Home</u></li>
+            <li>Recipies</li>
+            <li>About</li>
+            <li>Contact</li>
+          </ul>
+        </div>
+      </div>
+      <div class="subscribe-component">
+        <div class="left">
+          <h2>Master The Culinary Artist Today</h2>
+          <p>Explore 250+ recipies</p>
+          <div class="input-component">
+            <input type="email" placeholder="Enter your email"/>
+            <button class="btn">Subscribe</button>
+          </div>
+        </div>
+        <div class="right">
+          <img src="../img/svg/cooking.svg" alt="cooking">
+        </div>
+      </div>
+    </div>
+    <div class="categories">
+      <div class="panel">
+        <img src="../img/png/breakfast.png" alt="breakfast">
+        <span>Brekfast ideas</span>
+      </div>
+      <div class="panel">
+        <img src="../img/png/snacks.png" alt="snacks">
+        <span>Snacks</span>
+      </div>
+      <div class="panel">
+        <img src="../img/png/barbecue.png" alt="barbecue">
+        <span>Barbecue</span>
+      </div>
+      <div class="panel">
+        <img src="../img/png/cookies.png" alt="cookies">
+        <span>Cookies</span>
+      </div>
+    </div>
+    <div class="trending-recipies">
+      <div class="trending-recipies-title">
+        <i class="fa-solid fa-arrow-trend-up"></i>
+        Trending Recipies
+      </div>
+      <div class="cards">
+        <div class="card">
+          <img src="../img/photo/pancakes.jpg" alt="pancakes">
+        </div>
+        <div class="card">
+          <img src="../img/photo/musli.jpg" alt="musli">
+        </div>
+        <div class="card" id="pumpkin-pie">
+          <img src="../img/photo/pumpkin_pie.jpg" alt="pumpkin pie">
+          <div class="more-info">
+            <div class="name">
+              Pumpkin Pie
+            </div>
+            <div class="time"> <i class="fa-regular fa-clock"></i> 75 min</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="copyright">
+      &copy; EasyMeals. All rights reserved.
+    </div>
+    <div class="media">
+      <i class="fa-brands fa-instagram"></i>
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-pinterest"></i>
+    </div>
+  </footer>
+
+</body>
+
+</html>
